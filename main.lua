@@ -1,7 +1,7 @@
 Colors = require('libs.colors')
 Stand = require('libs.standard')
 Los = require('libs.los')
-Version = "A1.3"
+Version = "A1.3.2"
 Config = Stand.getfiletable('config.md')
 
 Bar = Config[4]
@@ -18,7 +18,6 @@ end
 end
 
 function loadfile(file)
-if not Stand.file_exists(file) then print"File not found"; main() end
 temp = Stand.ingest(file)
 temp = loadstring(temp)
 os.execute('clear')
@@ -71,4 +70,5 @@ if Stand.file_exists('startup.lua') then
 loadfile('startup.lua')
 end
 end
+
 main()
