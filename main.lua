@@ -49,7 +49,15 @@ function makefile(file)
 file = io.open(file, "w")
 file:write("")
 file:close()
+end
+	
+function changebar(bar,text)
+Los.settop(bar,text)
+end
 
+function bardefault()
+Bar = Config[4]
+Text = Config[6]
 end
 
 function printfile(file)
@@ -59,7 +67,15 @@ print(temp)
 end
 
 local temp = io.read()
+
+if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" then
 if not temp:find(')') and not temp:find(")") then  temp = temp.."()" end
+else
+temp = string.gsub(temp," ","('")
+temp = temp .. "')"
+temp = string.gsub(temp,",","','")
+end
+--print(temp)
 temp = loadstring(temp)
 temp()
 main()
