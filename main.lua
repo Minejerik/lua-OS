@@ -1,7 +1,7 @@
 Colors = require('libs.colors')
 Stand = require('libs.standard')
 Los = require('libs.los')
-Version = "A1.3.2"
+Version = "A1.4.0"
 Config = Stand.getfiletable('config.md')
 
 Bar = Config[4]
