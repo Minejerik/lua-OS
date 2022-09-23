@@ -7,19 +7,6 @@ if Config[12] == true then
 Stand.printtable(Config)
 end
 
-Commands = {}
-Commands[1]="top"
-Commands[2]="loadfile"
-Commands[3]="clear"
-Commands[4]="mkdir"
-Commands[5]="ls"
-Commands[6]="runprintedfile"
-Commands[7]="makefile"
-Commands[8]="changebar"
-Commands[9]="bardefault"
-Commands[10]="printfile"
-
-
 
 
 Bar = Config[4]
@@ -68,9 +55,14 @@ file = io.open(file, "w")
 file:write("")
 file:close()
 end
-	
+
 function changebar(bar,text)
 Los.settop(bar,text)
+end
+
+function config()
+os.execute('clear')
+loadfile('config.lua')
 end
 
 function bardefault()
@@ -85,14 +77,7 @@ print(temp)
 end
 
 local temp = io.read()
-
-for i = 1, Stand.getlength(Commands), 1 do
-if string.find(temp,Commands[i]) then
-
-end
-end
-	
-if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" then
+if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" or temp == "runprintedfile" or temp=="config" then
 if not temp:find(')') and not temp:find(")") then  temp = temp.."()" end
 else
 temp = string.gsub(temp," ","('")
