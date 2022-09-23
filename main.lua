@@ -3,10 +3,10 @@ Stand = require('libs.standard')
 Los = require('libs.los')
 Version = "A1.4.4"
 Config = Stand.getfiletable('config.md')
-if Config[12] == true then
+Debug = Config[12]
+if Debug == true then
 Stand.printtable(Config)
 end
-
 
 
 Bar = Config[4]
@@ -77,14 +77,15 @@ print(temp)
 end
 
 local temp = io.read()
+if Debug == true then print(temp) end
 if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" or temp == "runprintedfile" or temp=="config" then
-if not temp:find(')') and not temp:find(")") then  temp = temp.."()" end
+temp = temp.."()"
 else
 temp = string.gsub(temp," ","('")
 temp = temp .. "')"
 temp = string.gsub(temp,",","','")
 end
-if Config[12] == true then print(temp) end
+if Debug == true then print(temp) end
 temp = loadstring(temp)
 temp()
 main()
