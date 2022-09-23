@@ -145,4 +145,12 @@ standard.setfileline = function(filea,text,line)
 end
 
 
+
+local clock = os.clock
+standard.sleep = function(n)
+local t0 = clock()
+while clock() - t0 <= n do end
+end
+
+
 return standard
