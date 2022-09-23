@@ -126,6 +126,23 @@ os.execute('ls')
 	]]--
 end
 
+standard.setfileline = function(filea,text,line)
+
+    local file = io.open(filea, 'r')
+    local fileContent = {}
+    for line in file:lines() do
+        table.insert (fileContent, line)
+    end
+    io.close(file)
+
+    fileContent[line] = text
+
+    file = io.open(filea, 'w')
+    for line, value in ipairs(fileContent) do
+        file:write(value..'\n')
+    end
+    io.close(file)
+end
 
 
 return standard

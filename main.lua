@@ -1,8 +1,11 @@
 Colors = require('libs.colors')
 Stand = require('libs.standard')
 Los = require('libs.los')
-Version = "A1.4.0"
+Version = "A1.4.3"
 Config = Stand.getfiletable('config.md')
+if Config[12] == true then
+Stand.printtable(Config)
+end
 
 Bar = Config[4]
 Text = Config[6]
@@ -75,7 +78,7 @@ temp = string.gsub(temp," ","('")
 temp = temp .. "')"
 temp = string.gsub(temp,",","','")
 end
---print(temp)
+if Config[12] == true then print(temp) end
 temp = loadstring(temp)
 temp()
 main()
