@@ -7,6 +7,21 @@ if Config[12] == true then
 Stand.printtable(Config)
 end
 
+Commands = {}
+Commands[1]="top"
+Commands[2]="loadfile"
+Commands[3]="clear"
+Commands[4]="mkdir"
+Commands[5]="ls"
+Commands[6]="runprintedfile"
+Commands[7]="makefile"
+Commands[8]="changebar"
+Commands[9]="bardefault"
+Commands[10]="printfile"
+
+
+
+
 Bar = Config[4]
 Text = Config[6]
 Bar1color = "\27[0;33m"
@@ -71,6 +86,12 @@ end
 
 local temp = io.read()
 
+for i = 1, Stand.getlength(Commands), 1 do
+if string.find(temp,Commands[i]) then
+
+end
+end
+	
 if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" then
 if not temp:find(')') and not temp:find(")") then  temp = temp.."()" end
 else
