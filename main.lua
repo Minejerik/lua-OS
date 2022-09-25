@@ -4,9 +4,12 @@ Los = require('libs.los')
 Version = "A1.4.4"
 Config = Stand.getfiletable('config.md')
 Debug = Config[12]
+local startup = Config[10]
+--[[
 if Debug == true then
 Stand.printtable(Config)
 end
+]]--
 
 
 Bar = Config[4]
@@ -62,7 +65,7 @@ end
 
 function config()
 os.execute('clear')
-loadfile('config.lua')
+dofile('config.lua')
 end
 
 function bardefault()
@@ -76,8 +79,8 @@ temp = Stand.ingest(file)
 print(temp)
 end
 
-local temp = io.read()
-if Debug == true then print(temp) end
+
+local temp = string.lower(io.read())
 if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" or temp == "runprintedfile" or temp=="config" then
 temp = temp.."()"
 else
@@ -85,13 +88,13 @@ temp = string.gsub(temp," ","('")
 temp = temp .. "')"
 temp = string.gsub(temp,",","','")
 end
-if Debug == true then print(temp) end
+if Debug == "true" then print(temp) end
 temp = loadstring(temp)
 temp()
 main()
 end
 top()
-if Config[10] == true then
+if startup == "true" then
 if Stand.file_exists('startup.lua') then
 loadfile('startup.lua')
 end
