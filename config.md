@@ -10,3 +10,5 @@ lua os
 false
 (Below) debug mode !FILLS CONSOLE QUICKLY!
 false
+(Below) use colors
+false
