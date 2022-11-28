@@ -5,7 +5,7 @@ C = require('libs.colors')
 Ec = require('libs.ec')
 Stand = require('libs.standard')
 Los = require('libs.los')
-Version = "A1.4.7"
+Version = "A1.4.8"
 Config = Stand.getfiletable('config.md')
 Debug = Config[12]
 local startup = Config[10]
@@ -19,6 +19,13 @@ Bar1color = "\27[0;33m"
 Bar2color = "\27[0;33m"
 Textcolor = ""
 Usecolor = Config[14]
+if Usecolor == 'true' then
+    Usecolor = true
+else
+    Usecolor = false
+end
+
+
 
 local function top()
 if Usecolor == true then
