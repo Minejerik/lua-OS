@@ -5,7 +5,7 @@ C = require('libs.colors')
 Ec = require('libs.ec')
 Stand = require('libs.standard')
 Los = require('libs.los')
-Version = "A1.4.5"
+Version = "A1.4.6"
 Config = Stand.getfiletable('config.md')
 Debug = Config[12]
 local startup = Config[10]
@@ -20,7 +20,7 @@ Bar2color = "\27[0;33m"
 Textcolor = ""
 
 function top()
-io.write(Bar1color..Bar..C.none..C.white..Textcolor..Text..C.none..C.none..Bar2color..Bar..C.none)
+io.write(Bar1color..Bar..C.none..C.white..Text..C.none..Bar2color..Bar..C.none)
 for i = 1, Config[8], 1 do
 io.write('\n')
 end
@@ -87,15 +87,20 @@ temp = Stand.ingest(file)
 print(temp)
 end
 
+function credits()
+print('lua os')
+print('Made by Minejerik/Jaan-Erik Foedisch')
+print('Idea by Linus Trovalds')
+end
 
 local temp = string.lower(io.read())
 
-if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" or temp == "runprintedfile" or temp=="config" then
+if temp == "ls" or temp == "clear" or temp == "top" or temp == "bardefault" or temp == "runprintedfile" or temp=="config" or temp=='credits' then
 temp = temp.."()"
 else
 if Debug == "true" then print(temp) end
 local tempa = string.find(temp," ")
-if tempa == nil then print(C.red..'This requires arguments'..C.none); main() end
+if tempa == nil then print(C.red..'This requires arguments or doesnt exist'..C.none); main() end
 if Debug == "true" then print(tempa) end
 temp = replace_char(tempa,temp,"('")
 if Debug == "true" then print(temp) end
@@ -111,6 +116,8 @@ top()
 if startup == "true" then
 if Stand.file_exists('startup.lua') then
 loadfile('startup.lua')
+else
+print(C.red..'NO STARTUP FILE FOUND'..C.none)
 end
 end
 

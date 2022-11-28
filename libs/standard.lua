@@ -1,6 +1,5 @@
 local standard = {}
 
-
 standard.tablecheck = function (table, element)
     for _, value in pairs(table) do
       if value == element then
@@ -9,8 +8,6 @@ standard.tablecheck = function (table, element)
     end
     return false
 end
-
---beans
 
 standard.tablecheckline = function (table, element)
     for _, value in pairs(table) do
@@ -69,7 +66,6 @@ standard.append = function (file,towright)
    io.close(f)
 end
 
-
 standard.getline = function(fileName, name)
     local f = io.open(fileName, "r")
     local count = 1
@@ -86,17 +82,12 @@ standard.getline = function(fileName, name)
     error("Not enough lines in file!")
 end
 
-
-
--- see if the file exists
 standard.file_exists = function(file)
   local f = io.open(file, "rb")
   if f then f:close() end
   return f ~= nil
 end
 
--- get all lines from a file, returns an empty
--- list/table if the file does not exist
 standard.getfiletable = function(file)
   if not Stand.file_exists(file) then return {} end
   local lines = {}
@@ -117,13 +108,6 @@ end
 
 standard.listdir =function(dir)
 os.execute('ls')
-
-
-  --[[ local p = io.popen('find "'..dir..'" -type f') 
-   for file in p:lines() do
-       print(file)
-   end
-	]]--
 end
 
 standard.setfileline = function(filea,text,line)
@@ -144,13 +128,10 @@ standard.setfileline = function(filea,text,line)
     io.close(file)
 end
 
-
-
 local clock = os.clock
 standard.sleep = function(n)
-local t0 = clock()
-while clock() - t0 <= n do end
+	local t0 = clock()
+	while clock() - t0 <= n do end
 end
-
 
 return standard
